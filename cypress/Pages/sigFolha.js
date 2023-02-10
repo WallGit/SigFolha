@@ -30,8 +30,25 @@ class sigFolha {
         nomeSocialEdit: () => cy.get('input[nat="cadastroPessoaFolhaNomeSocial"]'),
         deletaCadastro: () => cy.get('[nat="cadastroPessoaFolhaCrudExcluir"]'),
         confirmaDelete: () => cy.get('[nat="pdBtnAlertOKSim"]'),
-        validaDelete: () => cy.get('.md-toast-text')
-    }                                 // nat="cadastroPessoaFolhaCrudExcluir"
+        validaDelete: () => cy.get('.md-toast-text'),
+        typeCode: () => cy.get('input[nat="cadastroPessoaFolhaCodigo"]'),
+        searchCode: () => cy.get('[nat="cadastroPessoaFolhaCodigoPesquisa"]'),
+        getDependente: () => cy.get('[nat="cadastroPessoaFolhaTabsFolhaDependentes"]'),
+        btnEditar: () => cy.get('[nat="botaoEditar"]'),
+        btnAdicionar: () => cy.get('[nat="cadastroPessoaFolhaDependentesGridDependentesabrirTelaDeCadastro"]'),
+        addNomeDep: () => cy.get('input[nat="cadastroFolhaPessoaDependenteNomeDependente"]'),
+        pesquisarGender: () => cy.get('[nat="cadastroFolhaPessoaDependenteSexoSelect"]'),
+        parentescoDep: () => cy.get('[nat="cadastroFolhaPessoaDependenteParentescoSelect"]'),
+        dataNasc: () => cy.get('input[nat="cadastroFolhaPessoaDependenteDataNascimento"]'),
+        universitario: () => cy.get('[nat="cadastroFolhaPessoaDependenteUniversitarioSelect"]'),
+        dependencia: () => cy.get('[nat="cadastroFolhaPessoaDependenteDependenciaSelect"'),
+        adcEsair: () => cy.get('[nat="cadastroFolhaPessoaDependenteCrudSalvarFechar"]')
+        //rollBar: () => cy.get('.ui-grid-viewport')
+
+    
+    
+    
+    }  // nat="cadastroPessoaFolhaCrudExcluir"
 
     loginUser(){
         this.elements.loginUser().type('automacao').should('be.visible')
@@ -142,6 +159,48 @@ class sigFolha {
     validaDelete(){      
         this.elements.validaDelete().should('have.text', '      Registro excluído com sucesso!    ')
     }
+    
+    typeCode(){      
+        this.elements.typeCode().click().type('145844',{ delay: 0}).should('be.visible')
+    }
+    searchCode(){      
+        this.elements.searchCode().click()
+    }
+    getDependente(){      
+        this.elements.getDependente().click().contains('Dependentes').should('be.visible')
+    }
+    btnEditar(){      
+        this.elements.btnEditar().last().click().should('be.visible')
+    }
+    btnAdicionar(){      
+        this.elements.btnAdicionar().click().should('be.visible')
+    }
+    addNomeDep(){      
+        this.elements.addNomeDep().click().type('Zohan',{ delay: 0}).should('be.visible')
+    }
+    pesquisarGender(){      
+        this.elements.pesquisarGender().click().type('Masculino',{ delay: 0}).type('{enter}').should('be.visible')
+    }
+    dataNasc(){      
+        this.elements.dataNasc().click().type('10/10/2000',{ delay: 0}).should('be.visible')
+    }
+    universitario(){      
+        this.elements.universitario().click().type('SIM',{ delay: 0}).type('{enter}').should('be.visible')
+    }
+    parentescoDep(){      
+        this.elements.parentescoDep().click().type('Pai/Mãe',{ delay: 0}).type('{enter}').should('be.visible')
+    }
+    dependencia(){      
+        this.elements.dependencia().click().type('Normal',{ delay: 0}).type('{enter}').should('be.visible')
+    }
+    adcEsair(){      
+        this.elements.adcEsair().click().should('be.visible')
+    }
+    // rollBar(){      
+    //     this.elements.rollBar().click().scrollTo('right', { easing: 'linear' }, { duration: 2000 }).should('be.visible')
+    // }
+   
+
 
 }
 
